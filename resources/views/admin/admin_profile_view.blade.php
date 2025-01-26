@@ -1,6 +1,8 @@
 @extends('admin_dashboard')
 @section('admin')
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <div class="content">
 
     <!-- Start Content-->
@@ -74,7 +76,8 @@
 
 
                             <div class="tab-pane" id="settings">
-                                <form>
+                                <form method="post" action="{{ route('admin.profile.store') }}" enctype="multipart/form-data" >
+                                    @csrf
                                     <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Personal Info</h5>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -98,15 +101,14 @@
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label for="example-fileinput" class="form-label">Profile Image</label>
-                                                <input type="file" id="example-fileinput" class="form-control">
+                                                <input type="file" name="photo" id="image" class="form-control">
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label for="example-fileinput" class="form-label"></label>
-                                                <img src="{{ (!empty($admindata->photo)) ? url('upload/admin_image/'.$admindata->photo) : url('upload/no_image.jpg') }}" class="rounded-circle avatar-lg img-thumbnail"
-                        alt="profile-image">
+                                                <img id="showImage" src="{{ (!empty($admindata->photo)) ? url('upload/admin_image/'.$admindata->photo) : url('upload/no_image.jpg') }}" class="rounded-circle avatar-lg img-thumbnail"alt="profile-image">
                                             </div>
                                         </div>
                                     </div> <!-- end row -->
@@ -116,6 +118,7 @@
                                     <div class="text-end">
                                         <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i class="mdi mdi-content-save"></i> Save</button>
                                     </div>
+
                                 </form>
                             </div>
                             <!-- end settings content-->
@@ -129,5 +132,20 @@
     </div> <!-- container -->
 
 </div> <!-- content -->
+
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$('#image').change(function(e){
+			var reader = new FileReader();
+			reader.onload =  function(e){
+				$('#showImage').attr('src',e.target.result);
+			}
+			reader.readAsDataURL(e.target.files['0']);
+		});
+	});
+</script>
+
 
 @endsection
