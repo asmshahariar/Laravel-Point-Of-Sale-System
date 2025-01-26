@@ -26,6 +26,14 @@ Route::get('/admin/logout', [AdminController::class, 'AdminDestroy'])->name('adm
 
 Route::get('/logout', [AdminController::class, 'AdminLogoutpage'])->name('admin.logout.page');
 
-Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
 
-Route::post('/admin/profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
+    Route::post('/admin/profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
+
+
+    Route::get('/change/password', [AdminController::class, 'ChangePassword'])->name('change.password');
+
+    Route::post('/update/password', [AdminController::class, 'UpdatePassword'])->name('update.password');
+    Route::post('/update/password', [AdminController::class, 'UpdatePassword'])->name('update.password');
+});
