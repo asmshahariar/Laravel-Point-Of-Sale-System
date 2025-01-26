@@ -85,7 +85,7 @@
 
         <footer class="footer footer-alt">
             <script>document.write(new Date().getFullYear())</script> &copy; Developed by
-                <a href="https://www.linkedin.com/in/a-s-m-shahariar-arian-10982123b/" target="_blank">Shahariar</a>code
+                <a href="https://www.linkedin.com/in/a-s-m-shahariar-arian-10982123b/" target="_blank">Shahariar</a>
         </footer>
 
         <!-- Vendor js -->

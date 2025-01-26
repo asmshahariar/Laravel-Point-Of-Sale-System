@@ -4,16 +4,6 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,3 +25,5 @@ require __DIR__ . '/auth.php';
 Route::get('/admin/logout', [AdminController::class, 'AdminDestroy'])->name('admin.logout');
 
 Route::get('/logout', [AdminController::class, 'AdminLogoutpage'])->name('admin.logout.page');
+
+Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
