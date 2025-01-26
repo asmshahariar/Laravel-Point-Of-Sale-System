@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\EmployeeController;
 
 
 Route::get('/', function () {
@@ -36,4 +37,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/update/password', [AdminController::class, 'UpdatePassword'])->name('update.password');
     Route::post('/update/password', [AdminController::class, 'UpdatePassword'])->name('update.password');
+
+    /// Employee All Route
+    Route::controller(EmployeeController::class)->group(function(){
+        Route::get('/all/employee','AllEmployee')->name('all.employee');
+        Route::get('/add/employee','AddEmployee')->name('add.employee');
+        Route::post('/store/employee','StoreEmployee')->name('employee.store');
+    });
+
 });
