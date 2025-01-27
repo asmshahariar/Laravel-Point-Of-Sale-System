@@ -42,16 +42,17 @@
                 <li>
                     <a href="#sidebarCrm" data-bs-toggle="collapse">
                         <i class="mdi mdi-account-multiple-outline"></i>
-                        <span> CRM </span>
+
+                        <span> Customer Manage   </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarCrm">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="crm-dashboard.html">Dashboard</a>
+                                <a href="{{ route('all.customer') }}">All Customer</a>
                             </li>
                             <li>
-                                <a href="crm-contacts.html">Contacts</a>
+                                <a href="{{ route('add.customer') }}">Add Customer</a>
                             </li>
                         </ul>
                     </div>
