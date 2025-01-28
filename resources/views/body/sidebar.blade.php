@@ -60,17 +60,17 @@
 
                 <li>
                     <a href="#sidebarEmail" data-bs-toggle="collapse">
-                        <i class="mdi mdi-email-multiple-outline"></i>
-                        <span> Email </span>
+                        <i class="mdi mdi-account-multiple-outline"></i>
+                        <span> Supplier Manage </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarEmail">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="email-inbox.html">Inbox</a>
+                                <a href="{{ route('all.supplier') }}">All Supplier</a>
                             </li>
                             <li>
-                                <a href="email-read.html">Read Email</a>
+                                <a href="{{ route('add.supplier') }}">Add Supplier</a>
                             </li>
                         </ul>
                     </div>
