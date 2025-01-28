@@ -6,7 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\EmployeeController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\SupplierController;
-
+use App\Http\Controllers\Backend\SalaryController;
 
 Route::get('/', function () {
     return view('auth/login');
@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/update/password', [AdminController::class, 'UpdatePassword'])->name('update.password');
     Route::post('/update/password', [AdminController::class, 'UpdatePassword'])->name('update.password');
 
-    /// Employee All Route
+    /// Employee
     Route::controller(EmployeeController::class)->group(function () {
         Route::get('/all/employee', 'AllEmployee')->name('all.employee');
         Route::get('/add/employee', 'AddEmployee')->name('add.employee');
@@ -51,25 +51,34 @@ Route::middleware(['auth'])->group(function () {
     });
 
 
-    /// Customer All Route
+    /// Customer
     Route::controller(CustomerController::class)->group(function () {
         Route::get('/all/customer', 'AllCustomer')->name('all.customer');
         Route::get('/add/customer', 'AddCustomer')->name('add.customer');
         Route::post('/store/customer', 'StoreCustomer')->name('customer.store');
-        Route::get('/edit/customer/{id}','EditCustomer')->name('edit.customer');
-        Route::post('/update/customer','UpdateCustomer')->name('customer.update');
-        Route::get('/delete/customer/{id}','DeleteCustomer')->name('delete.customer');
+        Route::get('/edit/customer/{id}', 'EditCustomer')->name('edit.customer');
+        Route::post('/update/customer', 'UpdateCustomer')->name('customer.update');
+        Route::get('/delete/customer/{id}', 'DeleteCustomer')->name('delete.customer');
     });
 
-    /// Customer All Route
+    /// Supplier
     Route::controller(SupplierController::class)->group(function () {
-        Route::get('/all/supplier','AllSupplier')->name('all.supplier');
-        Route::get('/add/supplier','AddSupplier')->name('add.supplier');
-        Route::post('/store/supplier','StoreSupplier')->name('supplier.store');
-        Route::get('/edit/supplier/{id}','EditSupplier')->name('edit.supplier');
-        Route::post('/update/supplier','UpdateSupplier')->name('supplier.update');
-        Route::get('/delete/supplier/{id}','DeleteSupplier')->name('delete.supplier');
+        Route::get('/all/supplier', 'AllSupplier')->name('all.supplier');
+        Route::get('/add/supplier', 'AddSupplier')->name('add.supplier');
+        Route::post('/store/supplier', 'StoreSupplier')->name('supplier.store');
+        Route::get('/edit/supplier/{id}', 'EditSupplier')->name('edit.supplier');
+        Route::post('/update/supplier', 'UpdateSupplier')->name('supplier.update');
+        Route::get('/delete/supplier/{id}', 'DeleteSupplier')->name('delete.supplier');
+        Route::get('/details/supplier/{id}', 'DetailsSupplier')->name('details.supplier');
     });
 
-
+    /// Salary
+    Route::controller(SalaryController::class)->group(function () {
+        Route::get('/add/advance/salary', 'AddAdvanceSalary')->name('add.advance.salary');
+        Route::post('/advance/salary/store', 'AdvanceSalaryStore')->name('advance.salary.store');
+        Route::get('/all/advance/salary', 'AllAdvanceSalary')->name('all.advance.salary');
+        Route::get('/edit/advance/salary/{id}', 'EditAdvanceSalary')->name('edit.advance.salary');
+        Route::post('/advance/salary/update', 'AdvanceSalaryUpdate')->name('advance.salary.update');
+        Route::get('/delete/advance/salary/{id}', 'DeleteAdvanceSalary')->name('delete.advance.salary');
+    });
 });
